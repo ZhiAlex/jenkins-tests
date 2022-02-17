@@ -2,6 +2,7 @@ package com.zhialex.tests.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.zhialex.tests.helpers.Attach;
 import com.zhialex.tests.model.PracticeFormViewModel;
 import com.zhialex.tests.pages.AutomationPracticeFormPage;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import static com.zhialex.tests.helpers.Attach.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
 
@@ -32,9 +33,10 @@ public class BaseTest {
 
     @AfterEach
     void addAttachments() {
-        screenshotAs("Last screenshot");
-        pageSource();
-        browserConsoleLogs();
-        addVideo();
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+        closeWebDriver();
     }
 }
