@@ -20,7 +20,7 @@ public class PracticeFormViewModelPageTest extends BaseTest {
                 .checkResultFields("Subjects", form.subjects.get(0) + ", " +
                         form.subjects.get(1) + ", " + form.subjects.get(2))
                 .checkResultFields("Hobbies", form.hobbies)
-                .checkResultFields("Picture", "cat.png")
+//                .checkResultFields("Picture", "cat.png")
                 .checkResultFields("Address", form.address)
                 .checkResultFields("State and City", form.states.get(0) + " " + form.cities.get(0));
     }

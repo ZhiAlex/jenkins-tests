@@ -90,7 +90,7 @@ public class AutomationPracticeFormPage {
         setSubject(form.subjects.get(1));
         setSubject(form.subjects.get(2));
         checkHobbiesCheckbox(form.hobbies);
-        loadFile(form.filepath);
+//        loadFile(form.filepath);
         setAddress(form.address);
         setState(form.states.get(0));
         setCity(form.cities.get(0));
