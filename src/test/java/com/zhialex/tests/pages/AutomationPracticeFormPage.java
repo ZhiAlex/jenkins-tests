@@ -2,6 +2,7 @@ package com.zhialex.tests.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.zhialex.tests.model.PracticeFormViewModel;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -26,6 +27,7 @@ public class AutomationPracticeFormPage {
             submitButton = $("#submit"),
             resultTable = $(".table-responsive");
 
+    @Step("Открытие страницы")
     public void openPage() {
         open("https://demoqa.com/automation-practice-form");
     }
@@ -80,6 +82,7 @@ public class AutomationPracticeFormPage {
         submitButton.scrollTo().click();
     }
 
+    @Step("Ввод данных")
     public void setValues(PracticeFormViewModel form) {
         setFName(form.fName);
         setLName(form.lName);
@@ -90,7 +93,7 @@ public class AutomationPracticeFormPage {
         setSubject(form.subjects.get(1));
         setSubject(form.subjects.get(2));
         checkHobbiesCheckbox(form.hobbies);
-        loadFile(form.filepath);
+//        loadFile(form.filepath);
         setAddress(form.address);
         setState(form.states.get(0));
         setCity(form.cities.get(0));
