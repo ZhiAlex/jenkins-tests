@@ -33,7 +33,8 @@ dependencies {
             "com.codeborne:selenide:6.2.1",
             'com.github.javafaker:javafaker:1.0.2',
             "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            'org.aspectj:aspectjweaver:1.9.8'
     )
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
@@ -43,6 +44,9 @@ dependencies {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+//    systemProperty("browser", "chrome")
 
     testLogging {
         lifecycle {
@@ -52,3 +56,11 @@ tasks.withType(Test) {
         }
     }
 }
+
+task properties_tests(type: Test){
+    useJUnitPlatform{
+        includeTags "properties"
+    }
+}
+
+// gradle clean properties_tests -Dbrowser=chrome
