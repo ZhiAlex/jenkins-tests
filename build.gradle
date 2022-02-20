@@ -56,11 +56,3 @@ tasks.withType(Test) {
         }
     }
 }
-
-task properties_tests(type: Test){
-    useJUnitPlatform{
-        includeTags "properties"
-    }
-}
-
-// gradle clean properties_tests -Dbrowser=chrome
