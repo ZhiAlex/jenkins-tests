@@ -21,17 +21,15 @@ public class BaseTest {
     static void beforeAll() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        String browser = System.getProperty("browser");
+        String[] browser = System.getProperty("browser").split("_");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-        capabilities.setCapability("browserName", browser.split("_")[0]);
-        capabilities.setCapability("browserVersion", browser.split("_")[1]);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.browser = browser.split("_")[0];
-        Configuration.browserVersion = browser.split("_")[1];
+        Configuration.browser = browser[0];
+        Configuration.browserVersion = browser[1];
         Configuration.remote = String.format(
                 "https://%s:%s@selenoid.autotests.cloud/wd/hub",
                 System.getProperty("user"),
