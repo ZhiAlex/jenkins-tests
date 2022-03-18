@@ -30,12 +30,15 @@ public class BaseTest {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
+        System.out.println(config.user());
+        System.out.println(config.password());
+
         Configuration.browserCapabilities = capabilities;
         Configuration.browser = browser[0];
         Configuration.browserVersion = browser[1];
         Configuration.remote = String.format(
                 "https://%s:%s@selenoid.autotests.cloud/wd/hub",
-                config.login(),
+                config.user(),
                 config.password()
         );
         Configuration.holdBrowserOpen = false;
