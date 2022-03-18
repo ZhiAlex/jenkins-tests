@@ -6,4 +6,4 @@ build
 gradle
 gradlew
 *.txt
-config
+/src/test/resources/config/credentials.properties
