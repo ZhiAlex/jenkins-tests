@@ -36,6 +36,7 @@ dependencies {
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             'org.aspectj:aspectjweaver:1.9.8'
     )
+    implementation 'org.aeonbits.owner:owner:1.0.12'
     testRuntimeOnly(
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
             "org.slf4j:slf4j-simple:1.7.29"

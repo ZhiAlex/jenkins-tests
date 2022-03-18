@@ -2,10 +2,12 @@ package com.zhialex.tests.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.zhialex.tests.config.CredentialsConfig;
 import com.zhialex.tests.helpers.Attach;
 import com.zhialex.tests.model.PracticeFormViewModel;
 import com.zhialex.tests.pages.AutomationPracticeFormPage;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -16,6 +18,7 @@ public class BaseTest {
 
     AutomationPracticeFormPage automationPracticeFormPage = new AutomationPracticeFormPage();
     PracticeFormViewModel form = new PracticeFormViewModel();
+    static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
 
     @BeforeAll
     static void beforeAll() {
@@ -32,8 +35,8 @@ public class BaseTest {
         Configuration.browserVersion = browser[1];
         Configuration.remote = String.format(
                 "https://%s:%s@selenoid.autotests.cloud/wd/hub",
-                System.getProperty("user"),
-                System.getProperty("password")
+                config.login(),
+                config.password()
         );
         Configuration.holdBrowserOpen = false;
         Configuration.browserSize = "1920x1080";
